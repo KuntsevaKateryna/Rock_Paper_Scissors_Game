@@ -31,9 +31,18 @@ Rock
     Scissors
 </button>
 
+<p class="js-score"></p>
+
 <button 
     onclick="
         localStorage.removeItem('score');
+        console.log( JSON.parse(localStorage.getItem('score')));
+        score = {
+            win : 0,
+            tie : 0,
+            lose : 0
+        };
+        updateScoreElement();
         ">
     Reset score
 </button>
@@ -42,14 +51,17 @@ Rock
 
 let randomNumber;
 let ramdomVal;
+var score = JSON.parse(localStorage.getItem('score'));
+if (score == null) 
+    {   score =  {
+            win : 0,
+            tie : 0,
+            lose : 0
+        };
+    };
 
-const score ={
-    win : 0,
-    lose : 0,
-    tie : 0
-}
-
-localStorage.setItem('score', JSON.stringify('score'));
+localStorage.setItem('score', JSON.stringify(score));
+updateScoreElement();
 
 
     function computerMove() {
@@ -66,7 +78,7 @@ localStorage.setItem('score', JSON.stringify('score'));
 return ramdomVal;
 }
 
-function rezOfCalculation(thrownVal) {
+    function rezOfCalculation(thrownVal) {
     localStorage.getItem('score');
     if (thrownVal === 'Rock') {
         if (ramdomVal === 'Scissors') {
@@ -123,7 +135,14 @@ function rezOfCalculation(thrownVal) {
             Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
         }
     }
-}    
+    updateScoreElement();
+}   
+
+    function updateScoreElement() {
+        document.querySelector('.js-score').innerHTML = 
+            `Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`;
+    }
+
 </script>
 </body>
 </html>
