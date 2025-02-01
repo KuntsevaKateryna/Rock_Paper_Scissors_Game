@@ -1,7 +1,7 @@
 <DOCTYPE html>
     <html>
         <head>
-            <title>Objects</title>
+            <title>LocalStorage</title>
             <style>
               
             </style>
@@ -31,6 +31,9 @@ Rock
     Scissors
 </button>
 
+<p class="js-computer-result"></p>
+<p class="js-total-result"></p>
+
 <p class="js-score"></p>
 
 <button 
@@ -42,27 +45,24 @@ Rock
             tie : 0,
             lose : 0
         };
-        updateScoreElement();
+        showResults();
         ">
     Reset score
 </button>
 
 <script>
 
-let randomNumber;
-let ramdomVal;
-var score = JSON.parse(localStorage.getItem('score'));
-if (score == null) 
-    {   score =  {
+    let randomNumber;
+    let ramdomVal;
+
+    let score = JSON.parse(localStorage.getItem('score')) ||
+        {
             win : 0,
             tie : 0,
             lose : 0
         };
-    };
 
-localStorage.setItem('score', JSON.stringify(score));
-updateScoreElement();
-
+    showResults() ;    
 
     function computerMove() {
         randomNumber = Math.random();
@@ -75,74 +75,66 @@ updateScoreElement();
     }
     else {ramdomVal = 'Scissors';
     }
+    document.querySelector('.js-computer-result').innerHTML = ramdomVal;
 return ramdomVal;
 }
 
-    function rezOfCalculation(thrownVal) {
-    localStorage.getItem('score');
+function rezOfCalculation(thrownVal) {
+let results;
     if (thrownVal === 'Rock') {
         if (ramdomVal === 'Scissors') {
             score.win = score.win + 1;
-            console.log (`score.win ${score.win}`)
-            alert(`Computer set ${ramdomVal}. You win!!
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
-            
+            results = 'You win!!';
         }
         else if (ramdomVal === 'Rock') {
             score.tie = score.tie + 1;
-            alert(`Computer set ${ramdomVal}. Tie!!
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
-            
+            results = 'Tie!!';
         }
         else {
             score.lose = score.lose + 1;
-            alert(`Computer set ${ramdomVal}. You lose( Try again!! 
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
-            
+            results = 'You lose( Try again!!';
         }
     }
     else if (thrownVal === 'Paper') {
         if (ramdomVal === 'Rock') {
-            ++score.win;
-            alert(`Computer set ${ramdomVal}. You win!! 
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+            score.win = score.win + 1;
+            results = 'You win!!';
         }
         else if (ramdomVal === 'Paper') {
-            ++score.tie;
-            alert(`Computer set ${ramdomVal}.Tie!! 
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+            score.tie = score.tie + 1;
+            results = 'Tie!!';
         }
         else {
-            ++score.lose;
-            alert(`Computer set ${ramdomVal}. You lose( Try again!!
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+            score.lose = score.lose + 1;
+            results = 'You lose( Try again!!';
         }
     }
     else if (thrownVal === 'Scissors') {
         if (ramdomVal === 'Paper') {
-            ++score.win;
-            alert(`Computer set ${ramdomVal}. You win!!
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+            score.win = score.win + 1;
+            results = 'You win!!';
         }
         else if (ramdomVal === 'Scissors') {
-            ++score.tie;
-            alert(`Computer set ${ramdomVal}.Tie!!
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+            score.tie = score.tie + 1;
+            results = 'Tie!!';
         }
         else {
-            ++score.lose;
-            alert(`Computer set ${ramdomVal}. You lose( Try again!!
-            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+            score.lose = score.lose  + 1;
+            results = 'You lose( Try again!!';
         }
     }
-    updateScoreElement();
-}   
+    localStorage.setItem('score', JSON.stringify(score));
+    alert(`Computer set ${ramdomVal}. So, ${results}.
+            Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`);
+    showResults(); 
+    document.querySelector('.js-total-result').innerHTML = 
+        `You: ${thrownVal} - Computer: ${ramdomVal}`;  
+}    
 
-    function updateScoreElement() {
-        document.querySelector('.js-score').innerHTML = 
-            `Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`;
-    }
-
+function showResults() {
+    document.querySelector('.js-score').innerHTML = 
+        `Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`;
+}
 </script>
 </body>
 </html>
