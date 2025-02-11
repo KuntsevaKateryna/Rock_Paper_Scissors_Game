@@ -1,7 +1,7 @@
 
     let randomNumber;
     let ramdomVal;
-
+    
     let score = JSON.parse(localStorage.getItem('score')) ||
         {
             win : 0,
@@ -28,6 +28,7 @@ return ramdomVal;
 
 function rezOfCalculation(thrownVal) {
 let results;
+ramdomVal = computerMove();
     if (thrownVal === 'Rock') {
         if (ramdomVal === 'Scissors') {
             score.win = score.win + 1;
@@ -85,3 +86,24 @@ function showResults() {
     document.querySelector('.js-score').innerHTML = 
         `Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`;
 }
+
+const rock_var = document.querySelector('.js-rock-btn');
+rock_var.addEventListener('click', 
+    ()=> {
+        rezOfCalculation('Rock');
+    }
+);
+const paper_var = document.querySelector('.js-paper-btn');
+rock_var.addEventListener('click', 
+    ()=> {
+        rezOfCalculation('Paper');
+    }
+);
+
+const scissors_var = document.querySelector('.js-scissors-btn');
+rock_var.addEventListener('click', 
+    ()=> {
+        rezOfCalculation('Scissors');
+    }
+);
+
