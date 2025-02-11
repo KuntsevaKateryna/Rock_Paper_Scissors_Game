@@ -94,16 +94,31 @@ rock_var.addEventListener('click',
     }
 );
 const paper_var = document.querySelector('.js-paper-btn');
-rock_var.addEventListener('click', 
+paper_var.addEventListener('click', 
     ()=> {
         rezOfCalculation('Paper');
     }
 );
 
 const scissors_var = document.querySelector('.js-scissors-btn');
-rock_var.addEventListener('click', 
+scissors_var.addEventListener('click', 
     ()=> {
         rezOfCalculation('Scissors');
     }
+);
+
+document.body.addEventListener(
+'keydown',
+(event) => {
+    if(event.key === 'r') {
+        rezOfCalculation('Rock');
+    }
+    else  if(event.key === 'p') {
+        rezOfCalculation('Paper');
+    }
+    else if (event.key === 's') {
+        rezOfCalculation('Scissors');
+    }
+}
 );
 
