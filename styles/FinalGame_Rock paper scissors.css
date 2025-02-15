@@ -20,4 +20,12 @@
                     margin-right: 10px;
                     cursor: pointer;
                 }
+                .js-btn-auto-play,
+                .js-btn-reset {
+                    background-color: white;
+                    border:none;
+                    font-size: 15pt;
+                    cursor: pointer;
+                    padding: 8px 15px;
+                }
 

@@ -23,7 +23,7 @@
 
 <p class="js-score"></p>
 
-<button 
+<button class="js-btn-reset"
     onclick="
         localStorage.removeItem('score');
         console.log( JSON.parse(localStorage.getItem('score')));
@@ -35,6 +35,12 @@
         showResults();
         ">
     Reset score
+</button>
+<button 
+    class="js-btn-auto-play"
+    onclick="
+        autoPlay();">
+    Auto Play
 </button>
 
 <script src="scripts/FinalGame_Rock paper scissors.js"></script>

@@ -121,4 +121,26 @@ document.body.addEventListener(
     }
 }
 );
+let autoPlayVar = false;
+let intervals;
+
+function autoPlay() {
+    if (!autoPlayVar) {
+        intervals = setInterval (
+            function () {
+                const myVal = computerMove();
+                rezOfCalculation(myVal);
+            },
+            1000
+        );
+        autoPlayVar = true;
+    }
+    else {
+        clearInterval(intervals);
+        autoPlayVar = false
+    }
+   
+
+
+}
 
