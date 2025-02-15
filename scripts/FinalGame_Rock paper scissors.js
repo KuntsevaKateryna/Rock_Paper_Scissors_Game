@@ -1,7 +1,7 @@
 
     let randomNumber;
     let ramdomVal;
-
+    
     let score = JSON.parse(localStorage.getItem('score')) ||
         {
             win : 0,
@@ -28,6 +28,7 @@ return ramdomVal;
 
 function rezOfCalculation(thrownVal) {
 let results;
+ramdomVal = computerMove();
     if (thrownVal === 'Rock') {
         if (ramdomVal === 'Scissors') {
             score.win = score.win + 1;
@@ -85,3 +86,61 @@ function showResults() {
     document.querySelector('.js-score').innerHTML = 
         `Total score: Wins:  ${score.win}, Loses: ${score.lose}, Ties: ${score.tie}`;
 }
+
+const rock_var = document.querySelector('.js-rock-btn');
+rock_var.addEventListener('click', 
+    ()=> {
+        rezOfCalculation('Rock');
+    }
+);
+const paper_var = document.querySelector('.js-paper-btn');
+paper_var.addEventListener('click', 
+    ()=> {
+        rezOfCalculation('Paper');
+    }
+);
+
+const scissors_var = document.querySelector('.js-scissors-btn');
+scissors_var.addEventListener('click', 
+    ()=> {
+        rezOfCalculation('Scissors');
+    }
+);
+
+document.body.addEventListener(
+'keydown',
+(event) => {
+    if(event.key === 'r') {
+        rezOfCalculation('Rock');
+    }
+    else  if(event.key === 'p') {
+        rezOfCalculation('Paper');
+    }
+    else if (event.key === 's') {
+        rezOfCalculation('Scissors');
+    }
+}
+);
+let autoPlayVar = false;
+let intervals;
+
+function autoPlay() {
+    if (!autoPlayVar) {
+        intervals = setInterval (
+            function () {
+                const myVal = computerMove();
+                rezOfCalculation(myVal);
+            },
+            1000
+        );
+        autoPlayVar = true;
+    }
+    else {
+        clearInterval(intervals);
+        autoPlayVar = false
+    }
+   
+
+
+}
+

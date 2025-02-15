@@ -6,26 +6,15 @@
         </head>
 <body> 
     <p class="title">Rock Paper Scissors</p>
-<button  class="move-btn"
-    onclick=" 
-       ramdomVal = computerMove();
-       rezOfCalculation('Rock');
-"><img src="images/rock-emoji.png" class="move-icon">
+<button  class="move-btn js-rock-btn">
+    <img src="images/rock-emoji.png" class="move-icon" >
 </button>
 
-<button class="move-btn"
-    onclick=" 
-        ramdomVal = computerMove();
-        rezOfCalculation('Paper');
-        ">
+<button class="move-btn js-paper-btn ">
     <img src="images/paper-emoji.png" class="move-icon">
 </button>
 
-<button class="move-btn"
-    onclick=" 
-      ramdomVal =  computerMove();
-      rezOfCalculation('Scissors');
-       ">
+<button class="move-btn js-scissors-btn" >
     <img src="images/Scissors-emoji.png" class="move-icon">
 </button>
 
@@ -34,7 +23,7 @@
 
 <p class="js-score"></p>
 
-<button 
+<button class="js-btn-reset"
     onclick="
         localStorage.removeItem('score');
         console.log( JSON.parse(localStorage.getItem('score')));
@@ -46,6 +35,12 @@
         showResults();
         ">
     Reset score
+</button>
+<button 
+    class="js-btn-auto-play"
+    onclick="
+        autoPlay();">
+    Auto Play
 </button>
 
 <script src="scripts/FinalGame_Rock paper scissors.js"></script>
