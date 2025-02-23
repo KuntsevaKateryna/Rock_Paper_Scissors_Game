@@ -127,7 +127,7 @@ let intervals;
 function autoPlay() {
     if (!autoPlayVar) {
         intervals = setInterval (
-            function () {
+            () => {
                 const myVal = computerMove();
                 rezOfCalculation(myVal);
             },
