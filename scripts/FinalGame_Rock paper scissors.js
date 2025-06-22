@@ -15,12 +15,12 @@
         randomNumber = Math.random();
         console.log(randomNumber);
         if (randomNumber <= 0.3) {
-        ramdomVal = 'Rock';
+        ramdomVal = 'rock';
         }
     else if (randomNumber > 0.3 && randomNumber <=0.6)   {
-        ramdomVal = 'Paper';
+        ramdomVal = 'paper';
     }
-    else {ramdomVal = 'Scissors';
+    else {ramdomVal = 'scissors';
     }
     //document.querySelector('.js-computer-result').innerHTML = ramdomVal;
 return ramdomVal;
@@ -29,12 +29,12 @@ return ramdomVal;
 function rezOfCalculation(thrownVal) {
 let results;
 ramdomVal = computerMove();
-    if (thrownVal === 'Rock') {
-        if (ramdomVal === 'Scissors') {
+    if (thrownVal === 'rock') {
+        if (ramdomVal === 'scissors') {
             score.win = score.win + 1;
             results = 'You win!!';
         }
-        else if (ramdomVal === 'Rock') {
+        else if (ramdomVal === 'rock') {
             score.tie = score.tie + 1;
             results = 'Tie!!';
         }
@@ -43,12 +43,12 @@ ramdomVal = computerMove();
             results = 'You lose( Try again!!';
         }
     }
-    else if (thrownVal === 'Paper') {
-        if (ramdomVal === 'Rock') {
+    else if (thrownVal === 'paper') {
+        if (ramdomVal === 'rock') {
             score.win = score.win + 1;
             results = 'You win!!';
         }
-        else if (ramdomVal === 'Paper') {
+        else if (ramdomVal === 'paper') {
             score.tie = score.tie + 1;
             results = 'Tie!!';
         }
@@ -57,12 +57,12 @@ ramdomVal = computerMove();
             results = 'You lose( Try again!!';
         }
     }
-    else if (thrownVal === 'Scissors') {
-        if (ramdomVal === 'Paper') {
+    else if (thrownVal === 'scissors') {
+        if (ramdomVal === 'paper') {
             score.win = score.win + 1;
             results = 'You win!!';
         }
-        else if (ramdomVal === 'Scissors') {
+        else if (ramdomVal === 'scissors') {
             score.tie = score.tie + 1;
             results = 'Tie!!';
         }
@@ -90,20 +90,20 @@ function showResults() {
 const rock_var = document.querySelector('.js-rock-btn');
 rock_var.addEventListener('click', 
     ()=> {
-        rezOfCalculation('Rock');
+        rezOfCalculation('rock');
     }
 );
 const paper_var = document.querySelector('.js-paper-btn');
 paper_var.addEventListener('click', 
     ()=> {
-        rezOfCalculation('Paper');
+        rezOfCalculation('paper');
     }
 );
 
 const scissors_var = document.querySelector('.js-scissors-btn');
 scissors_var.addEventListener('click', 
     ()=> {
-        rezOfCalculation('Scissors');
+        rezOfCalculation('scissors');
     }
 );
 
@@ -111,13 +111,13 @@ document.body.addEventListener(
 'keydown',
 (event) => {
     if(event.key === 'r') {
-        rezOfCalculation('Rock');
+        rezOfCalculation('rock');
     }
     else  if(event.key === 'p') {
-        rezOfCalculation('Paper');
+        rezOfCalculation('paper');
     }
     else if (event.key === 's') {
-        rezOfCalculation('Scissors');
+        rezOfCalculation('scissors');
     }
 }
 );
